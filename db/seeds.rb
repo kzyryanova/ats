@@ -50,7 +50,7 @@ end
 
 p "10 applications got hire status"
 
-Application.limit(10).offset(10).pluck(:id).shuffle.each do |application_index|
+Application.limit(10).offset(12).pluck(:id).shuffle.each do |application_index|
   Events::Application::Rejected.create(
     application_id: application_index
   )

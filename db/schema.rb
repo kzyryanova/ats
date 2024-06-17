@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_16_155416) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_17_125230) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_155416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["application_id"], name: "index_application_events_on_application_id"
+    t.index ["created_at"], name: "index_application_events_on_created_at"
+    t.index ["type"], name: "index_application_events_on_type"
   end
 
   create_table "applications", force: :cascade do |t|
@@ -40,7 +42,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_155416) do
     t.json "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_job_events_on_created_at"
     t.index ["job_id"], name: "index_job_events_on_job_id"
+    t.index ["type"], name: "index_job_events_on_type"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -49,6 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_155416) do
     t.boolean "activated", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["activated"], name: "index_jobs_on_activated"
   end
 
   add_foreign_key "application_events", "applications"
