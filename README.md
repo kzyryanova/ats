@@ -3,7 +3,9 @@
 ATS with Event Sourcing
 
 `rails db:seed` to seed a database
+
 `rspec spec` to run unit tests
+
 `curl http://127.0.0.2:3000/api/v1/applications` to list applications for all activated jobs, response example:
 ```
 [
